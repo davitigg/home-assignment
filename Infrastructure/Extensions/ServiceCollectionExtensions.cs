@@ -16,6 +16,8 @@ namespace Infrastructure.Extensions
                 options.UseInMemoryDatabase(Configuration.GetConnectionString("ConnectionDbDefault")));
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IDeviceRepository, DeviceRepository>();
+            services.AddSingleton<IHashingService, HashingService>();
             
             services.AddMemoryCache();
             services.AddScoped<IMemoryCacheService, MemoryCacheService>();

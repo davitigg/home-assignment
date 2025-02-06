@@ -1,8 +1,9 @@
 namespace Application.DTOs.Requests
 {
-    public class VerifyOtpRequest
+
+    public class AcceptPrivacyPolicyRequest
     {
         public string ICNumber { get; set; }
-        public string OtpPin { get; set; }
+
     }
 }

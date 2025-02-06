@@ -1,6 +1,6 @@
 namespace Application.DTOs.Requests
 {
-    public class SetDevicePinRequest
+    public class RegisterDevicePinRequest
     {
         public string ICNumber { get; set; }
         public string DeviceId { get; set; }

@@ -34,12 +34,12 @@ namespace API.Controllers
             return response.ToHttpResponse();
         }
 
-        // [HttpPost("verify-mobile-otp")]
-        // public async Task<IResult> VerifyMobileOtp([FromBody] VerifyOtpRequest request)
-        // {
-        //     var response = await _authService.VerifyMobileOtpAsync(request);
-        //     return response.ToHttpResponse();
-        // }
+        [HttpPost("verify-mobile-otp")]
+        public async Task<IResult> VerifyMobileOtp([FromBody] VerifyOtpRequest request)
+        {
+            var response = await _authService.VerifyMobileOtpAsync(request);
+            return response.ToHttpResponse();
+        }
 
         [HttpPost("send-email-otp")]
         public async Task<IResult> SendEmailOtp([FromBody] SendOtpRequest request)
@@ -48,19 +48,26 @@ namespace API.Controllers
             return response.ToHttpResponse();
         }
 
-        // [HttpPost("verify-email-otp")]
-        // public async Task<IResult> VerifyEmailOtp([FromBody] VerifyOtpRequest request)
-        // {
-        //     var response = await _authService.VerifyEmailOtpAsync(request);
-        //     return response.ToHttpResponse();
-        // }
+        [HttpPost("verify-email-otp")]
+        public async Task<IResult> VerifyEmailOtp([FromBody] VerifyOtpRequest request)
+        {
+            var response = await _authService.VerifyEmailOtpAsync(request);
+            return response.ToHttpResponse();
+        }
 
-        // [HttpPost("set-device-pin")]
-        // public async Task<IResult> SetDevicePin([FromBody] SetDevicePinRequest request)
-        // {
-        //     var response = await _authService.SetDevicePinAsync(request);
-        //     return response.ToHttpResponse();
-        // }
+         [HttpPost("accept-privacy-policy")]
+        public async Task<IResult> AcceptPrivacyPolicy ([FromBody] AcceptPrivacyPolicyRequest request)
+        {
+            var response = await _authService.AcceptPrivacyPolicyAsync(request);
+            return response.ToHttpResponse();
+        }
+
+        [HttpPost("register-device")]
+        public async Task<IResult> RegisterDevice([FromBody] RegisterDevicePinRequest request)
+        {
+            var response = await _authService.RegisterDeviceAsync(request);
+            return response.ToHttpResponse();
+        }
 
         // [HttpPost("login-with-pin")]
         // public async Task<IResult> LoginWithPin([FromBody] LoginWithPinRequest request)
