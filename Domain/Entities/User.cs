@@ -8,6 +8,8 @@ namespace Domain.Entities
         public string Mobile { get; set; }
         public string Email { get; set; }
 
+        public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+
         private User() { }
 
         public User(string name, string icNumber, string mobile, string email)

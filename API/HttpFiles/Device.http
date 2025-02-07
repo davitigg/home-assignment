@@ -1,0 +1,81 @@
+@mobile_otp = "2660"
+@email_otp = "8696"
+
+# get all devices (for testing purposes)
+GET {{host_address}}/api/device
+Accept: application/json
+
+###
+ 
+# get all pending devices (for testing purposes)
+GET {{host_address}}/api/device/pending
+Accept: application/json
+
+###
+ 
+# add a pending device
+POST {{host_address}}/api/device/pending
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "deviceId": "af7d47b8769d4cde9e3503bd0bf2cb0c"
+}
+
+###
+
+# verify pending device mobile
+POST {{host_address}}/api/device/pending/verify-mobile
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "code": {{mobile_otp}}
+}
+
+###
+
+# verify pending device email
+POST {{host_address}}/api/device/pending/verify-email
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "code": {{email_otp}}
+}
+
+###
+
+# accept pending device privacy policy
+POST {{host_address}}/api/device/pending/accept-privacy-policy
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910"
+}
+
+###
+
+# add a verified device
+POST {{host_address}}/api/device
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "deviceId": "af7d47b8769d4cde9e3503bd0bf2cb0c",
+  "pin": "1234"
+}
+
+###
+
+# enable biometric for a device
+POST {{host_address}}/api/device/enable-biometrics
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "deviceId": "af7d47b8769d4cde9e3503bd0bf2cb0c",
+  "biometricData": "A98050D83041EC904FC06567A0E254FB976A390FD6353C162836BF015DC3FC86"
+}
+
+####

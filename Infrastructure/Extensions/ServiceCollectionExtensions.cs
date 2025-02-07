@@ -1,7 +1,8 @@
+using Domain.Interfaces;
+using Infrastructure.Configuration;
 using Infrastructure.Persistence;
 using Infrastructure.Repositories;
-using Infrastructure.Services;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,18 +10,17 @@ namespace Infrastructure.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration Configuration)
+        public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
+            services.Configure<DbSettings>(configuration.GetSection(DbSettings.SectionName));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseInMemoryDatabase(Configuration.GetConnectionString("ConnectionDbDefault")));
+            services.AddDbContext<ApplicationDbContext>();
+            services.AddSingleton<MemoryCache>();
 
+            services.AddScoped<IOtpRepository, OtpRepository>();
+            services.AddScoped<IPendingDeviceRepository, PendingDeviceRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDeviceRepository, DeviceRepository>();
-            services.AddSingleton<IHashingService, HashingService>();
-            
-            services.AddMemoryCache();
-            services.AddScoped<IMemoryCacheService, MemoryCacheService>();
 
             return services;
         }

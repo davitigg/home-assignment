@@ -32,7 +32,6 @@ namespace API.Extensions
         {
             return error.Code switch
             {
-                ErrorTypeConstant.ValidationError => Results.BadRequest(result.Error),
                 ErrorTypeConstant.BadRequest => Results.BadRequest(result.Error),
                 ErrorTypeConstant.NotFound => Results.NotFound(result.Error),
                 ErrorTypeConstant.Conflict => Results.Conflict(result.Error),

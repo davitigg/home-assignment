@@ -1,0 +1,18 @@
+# get all users (for testing purposes)
+GET {{host_address}}/api/user
+Accept: application/json
+
+###
+
+# register a new user
+POST  {{host_address}}/api/user
+Content-Type: application/json
+
+{
+  "name": "John Doe",
+  "icNumber": "12345678910",
+  "mobile": "+995512345678",
+  "email": "johndoe@example.com"
+}
+
+###

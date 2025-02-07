@@ -1,19 +1,29 @@
-using Infrastructure.Repositories;
+using API.Extensions;
+using Application.DTOs.Requests;
+using Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController(IUserRepository userRepository) : ControllerBase
+    public class UserController(IUserService userService) : ControllerBase
     {
-        private readonly IUserRepository _userRepository = userRepository;
+        private readonly IUserService _userService = userService;
 
-        [HttpGet]
-        public async Task<IActionResult> GetUsers()
+        [HttpPost]
+        public async Task<IResult> AddUser([FromBody] AddUserRequest request)
         {
-            var users = await _userRepository.GetAllUsersAsync();
-            return Ok(users);
+            var response = await _userService.AddUserAsync(request);
+            return response.ToHttpResponse();
+        }
+
+        // for testing purposes
+        [HttpGet]
+        public async Task<IResult> GetAllUsers()
+        {
+            var response = await _userService.GetAllUsersAsync();
+            return response.ToHttpResponse();
         }
     }
 }

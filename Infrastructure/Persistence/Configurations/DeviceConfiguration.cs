@@ -8,11 +8,16 @@ namespace Infrastructure.Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Device> builder)
         {
+
             builder.HasKey(d => d.Id);
             builder.Property(d => d.UserId).IsRequired();
-            builder.Property(d => d.DeviceId).IsRequired().HasMaxLength(100);
-            builder.HasIndex(d => d.DeviceId).IsUnique(); // Ensures unique devices
-            builder.Property(d => d.DeviceAuthHash).IsRequired().HasMaxLength(256);
+            builder.Property(d => d.DeviceId).IsRequired().HasMaxLength(255);
+            builder.Property(d => d.DevicePinHash).IsRequired().HasMaxLength(255);
+            builder.Property(d => d.DeviceBiometricHash).HasMaxLength(255);
+            builder.Property(d => d.BiometricEnabled).IsRequired();
+            builder.Property(d => d.CreatedAt).IsRequired();
+
+            builder.HasIndex(d => new { d.UserId, d.DeviceId }).IsUnique();
 
             builder.HasOne<User>()
                    .WithMany()

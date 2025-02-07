@@ -1,0 +1,27 @@
+# get all otp entries (for testing purposes)
+GET {{host_address}}/api/otp
+Accept: application/json
+
+###
+ 
+# send otp to mobile
+POST {{host_address}}/api/otp/mobile/send
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "deviceId": "af7d47b8769d4cde9e3503bd0bf2cb0c"
+}
+
+###
+
+# send otp to email
+POST {{host_address}}/api/otp/email/send
+Content-Type: application/json
+
+{
+  "icNumber": "12345678910",
+  "deviceId": "af7d47b8769d4cde9e3503bd0bf2cb0c"
+}
+
+###
