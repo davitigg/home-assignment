@@ -14,7 +14,7 @@ namespace Infrastructure.Persistence
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseInMemoryDatabase(dbSettings.Value.InMemoryDb);
-            // optionsBuilder.UseSqlServer(dbSettings.Value.ConnectionDbDefault);
+            // optionsBuilder.UseSqlServer(dbSettings.Value.SqlServer);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

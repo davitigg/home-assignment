@@ -1,5 +1,5 @@
-@mobile_otp = "2660"
-@email_otp = "8696"
+@mobile_otp = "7984"
+@email_otp = "5966"
 
 # get all devices (for testing purposes)
 GET {{host_address}}/api/device
