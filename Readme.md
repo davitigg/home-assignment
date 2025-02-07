@@ -3,7 +3,7 @@
 
 
 ## About This Project
-This project is a home assignment, implemented according to the [design](01-01-Registration.pdf) flow provided in the assignment.
+This project is a home assignment, implemented according to the [design](docs/01-01-Registration.pdf) flow provided in the assignment.
 
 - This project includes all the necessary APIs as per the design.
 - No third-party integrations have been included.
@@ -12,14 +12,14 @@ This project is a home assignment, implemented according to the [design](01-01-R
 
 
 ## API Testing
-For testing the API endpoints, `.http` files are available in the **[`Http/`](API/Http/)** folder. These files contain ready-to-use requests for each controller.
+For testing the API endpoints, `.http` files are available in the **[`Http/`](http/)** folder. These files contain ready-to-use requests for each controller.
 
-**[User.http](API/Http/User.http)**  
+**[User.http](http/User.http)**  
 Handles user registration and retrieval.
 - **GET /api/user** → _(For testing purposes)_ Retrieve all users.
 - **POST /api/user** → Register a new user.
 
-**[Device.http](API/Http/Device.http)**  
+**[Device.http](http/Device.http)**  
 Manages device registration, verification, and biometrics setup.
 - **GET /api/device** → _(For testing purposes)_ Retrieve all registered devices.
 - **GET /api/device/pending** → _(For testing purposes)_ Get all pending devices.
@@ -30,7 +30,7 @@ Manages device registration, verification, and biometrics setup.
 - **POST /api/device** → Finalize device registration.
 - **POST /api/device/enable-biometrics** → Enable biometric authentication for the device.
 
-**[Otp.http](API/Http/Otp.http)**  
+**[Otp.http](http/Otp.http)**  
 Manages OTP sending and retrieval.
 - **GET /api/otp** → _(For testing purposes)_ Retrieve all OTP entries.
 - **POST /api/otp/mobile/send** → _(No third-party integration, OTP is printed on console)_ Send OTP to mobile.
